@@ -8,9 +8,12 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	Graph* test = new Graph(5);
-	test->graphArray[3][17] = 1;
-	test->graphArray[14][2] = 1;
+	test->graphArray[2][14] = 1;
+	test->graphArray[4][23] = 1;
+	test->graphArray[22][2] = 1;
+	test->graphArray[15][4] = 1;
 	test->print();
+	test->dijkstra();
 	//Gets the first line 
 	int numGames;
 	cin >> numGames;

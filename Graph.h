@@ -7,6 +7,9 @@ class Graph{
 		int boardSize;
 		Graph(int);
 		void print();
+		void dijkstra();
+		int minDistance(int[], bool[]);
+		int printSolution(int[], int);
 
 };
 
