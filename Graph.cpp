@@ -13,9 +13,17 @@ Graph::Graph(int size){
 		for(int j = 0; j < boardSize; j++)
 			graphArray[i][j] = 0;
 	}
-	//Set distances for first dice roll
-	for(int k = 2; k <= 7; k++)
-		graphArray[1][k] = 1;
+	//Set row 0 to numbers for ease of use
+	for(int d = 0; d < boardSize; d++){
+		graphArray[0][d] = d;
+		graphArray[d][0] = d;
+	}
+
+	//Set distances for dice roll
+	for(int k = 1; k < boardSize; k++)
+		for(int m = k+1; m < k+7; m++)
+			if(m < boardSize)
+				graphArray[k][m] = 2;
 
 }
 

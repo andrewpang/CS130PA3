@@ -7,6 +7,10 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+	Graph* test = new Graph(5);
+	test->graphArray[3][17] = 1;
+	test->graphArray[14][2] = 1;
+	test->print();
 	//Gets the first line 
 	int numGames;
 	cin >> numGames;
