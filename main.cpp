@@ -7,11 +7,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	Graph* test = new Graph(5);
-	test->graphArray[2][14] = 1;
-	test->graphArray[4][23] = 1;
-	test->graphArray[22][2] = 1;
-	test->graphArray[15][4] = 1;
+	Graph* test = new Graph(10);
+	test->graphArray[7][12] = 1;
+	test->graphArray[23][5] = 1;
+
+
 	test->print();
 	test->dijkstra();
 	//Gets the first line 

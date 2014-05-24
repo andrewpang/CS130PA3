@@ -4,7 +4,7 @@
 #include <limits.h>
 using namespace std;
 #include "Graph.h"
-#include <queue>
+#include <stack>
 
 Graph::Graph(int size){
 	boardSize = size*size +1;
@@ -39,11 +39,11 @@ int Graph::minDistance(int dist[], bool visit[]){
 	return min_index;
 }
 
-int Graph::printSolution(int dist[], int n)
+int Graph::printSolution(int dist[], int pred[], int n)
 {
    printf("Vertex   Distance from Source\n");
    for (int i = 1; i < boardSize; i++)
-      printf("%d \t\t %d\n", i, dist[i]);
+      printf("%d \t\t %d\t %d\n", i, dist[i], pred[i]);
 }
 
 void Graph::dijkstra(){
@@ -71,7 +71,31 @@ void Graph::dijkstra(){
 		}
 
 	}
-	printSolution(distance, boardSize);
+	//printSolution(distance, pred, boardSize);
+
+	stack <int> ordered;
+	int x = boardSize-1;
+	ordered.push(x);
+	while(pred[x] != 0){
+		ordered.push(pred[x]);
+		x = pred[x];
+	}
+
+	while (ordered.empty() != true){
+		int top = ordered.top();
+		if(top == 1)
+			cout << top << "";
+		else if (graphArray[pred[top]][top] == 1 && pred[top] > top)
+			cout << "-" << top << "";
+		else if (graphArray[pred[top]][top] == 1 && pred[top] < top)
+			cout << "+" << top << "";
+		else
+			cout << " " << top << "";
+
+		ordered.pop();
+	}
+
+
 
 }
 

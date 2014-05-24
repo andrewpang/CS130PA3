@@ -9,7 +9,7 @@ class Graph{
 		void print();
 		void dijkstra();
 		int minDistance(int[], bool[]);
-		int printSolution(int[], int);
+		int printSolution(int[], int[], int);
 
 };
 
