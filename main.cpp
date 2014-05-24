@@ -7,18 +7,15 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	Graph* test = new Graph(10);
-	test->graphArray[7][12] = 1;
-	test->graphArray[23][5] = 1;
-
-
-	test->print();
-	test->dijkstra();
+	// Graph* test = new Graph(10);
+	// test->graphArray[7][12] = 1;
+	// test->graphArray[23][5] = 1;
+	// test->dijkstra(1, 1);
 	//Gets the first line 
 	int numGames;
 	cin >> numGames;
 	
-	for(int i = 0; i < numGames; i++){
+	for(int i = 1; i <= numGames; i++){
 		//For each game gets N, L, S(first line)
 		int boardSize;
 		cin >> boardSize; 
@@ -46,7 +43,9 @@ int main(int argc, char *argv[])
 			cin >> ySnake;
 			newGraph->graphArray[xSnake][ySnake] = 1;
 		}
-		newGraph->print();
+		cout << "Board Game #" << i << ":" << endl;
+
+		newGraph->dijkstra();
 	}
 
 }

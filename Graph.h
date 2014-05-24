@@ -8,8 +8,9 @@ class Graph{
 		Graph(int);
 		void print();
 		void dijkstra();
+		//void output(int []);
 		int minDistance(int[], bool[]);
-		int printSolution(int[], int[], int);
+		int printSolution(int[]);
 
 };
 

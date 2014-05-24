@@ -39,11 +39,35 @@ int Graph::minDistance(int dist[], bool visit[]){
 	return min_index;
 }
 
-int Graph::printSolution(int dist[], int pred[], int n)
+int Graph::printSolution(int pred[])
 {
-   printf("Vertex   Distance from Source\n");
-   for (int i = 1; i < boardSize; i++)
-      printf("%d \t\t %d\t %d\n", i, dist[i], pred[i]);
+  	stack <int> ordered;
+	int x = boardSize-1;
+	ordered.push(x);
+	while(pred[x] != 0){
+		ordered.push(pred[x]);
+		x = pred[x];
+	}
+
+	//NEED TO SUBTRACT LADDERS/SNAKES THAT WERE USED
+	int size = ordered.size();
+	cout << size << endl;
+
+	while (ordered.empty() != true){
+	int top = ordered.top();
+	if(top == 1)
+		cout << top << "";
+	else if (graphArray[pred[top]][top] == 1 && pred[top] > top)
+		cout << "-" << top << "";
+	else if (graphArray[pred[top]][top] == 1 && pred[top] < top)
+		cout << "+" << top << "";
+	else
+		cout << " " << top << "";
+	if(ordered.size() == 1)
+		cout << endl;
+
+	ordered.pop();
+	}
 }
 
 void Graph::dijkstra(){
@@ -71,33 +95,9 @@ void Graph::dijkstra(){
 		}
 
 	}
-	//printSolution(distance, pred, boardSize);
-
-	stack <int> ordered;
-	int x = boardSize-1;
-	ordered.push(x);
-	while(pred[x] != 0){
-		ordered.push(pred[x]);
-		x = pred[x];
-	}
-
-	while (ordered.empty() != true){
-		int top = ordered.top();
-		if(top == 1)
-			cout << top << "";
-		else if (graphArray[pred[top]][top] == 1 && pred[top] > top)
-			cout << "-" << top << "";
-		else if (graphArray[pred[top]][top] == 1 && pred[top] < top)
-			cout << "+" << top << "";
-		else
-			cout << " " << top << "";
-
-		ordered.pop();
-	}
-
-
-
+	printSolution(pred);
 }
+
 
 void Graph::print(){
 	for (int i = 0; i < boardSize; i++){
