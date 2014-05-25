@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	// Graph* test = new Graph(10);
 	// test->graphArray[7][12] = 1;
 	// test->graphArray[23][5] = 1;
-	// test->dijkstra(1, 1);
+	// test->dijkstra();
 	//Gets the first line 
 	int numGames;
 	cin >> numGames;
@@ -44,7 +44,6 @@ int main(int argc, char *argv[])
 			newGraph->graphArray[xSnake][ySnake] = 1;
 		}
 		cout << "Board Game #" << i << ":" << endl;
-
 		newGraph->dijkstra();
 	}
 

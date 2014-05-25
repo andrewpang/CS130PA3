@@ -5,6 +5,8 @@
 using namespace std;
 #include "Graph.h"
 #include <stack>
+#include <string>
+#include <sstream>
 
 Graph::Graph(int size){
 	boardSize = size*size +1;
@@ -41,6 +43,7 @@ int Graph::minDistance(int dist[], bool visit[]){
 
 int Graph::printSolution(int pred[])
 {
+	stringstream path;
   	stack <int> ordered;
 	int x = boardSize-1;
 	ordered.push(x);
@@ -50,24 +53,32 @@ int Graph::printSolution(int pred[])
 	}
 
 	//NEED TO SUBTRACT LADDERS/SNAKES THAT WERE USED
-	int size = ordered.size();
-	cout << size << endl;
+	int size = ordered.size()-1;
 
 	while (ordered.empty() != true){
 	int top = ordered.top();
 	if(top == 1)
-		cout << top << "";
-	else if (graphArray[pred[top]][top] == 1 && pred[top] > top)
-		cout << "-" << top << "";
-	else if (graphArray[pred[top]][top] == 1 && pred[top] < top)
-		cout << "+" << top << "";
-	else
-		cout << " " << top << "";
+		path << top;
+	else if (graphArray[pred[top]][top] == 1 && pred[top] > top){
+		path << "-" << top;
+		size--;
+		}
+	else if (graphArray[pred[top]][top] == 1 && pred[top] < top){
+		path << "+" << top;
+		size--;
+		}
+	else{
+		path << " " << top;	
+		}	
 	if(ordered.size() == 1)
-		cout << endl;
+		path << '\n';
 
 	ordered.pop();
 	}
+
+	cout << size << endl;
+	string s = path.str();
+	cout << s << "";
 }
 
 void Graph::dijkstra(){
