@@ -5,7 +5,9 @@ class Graph{
 	public:
 		int **graphArray;
 		int boardSize;
+		Graph();
 		Graph(int);
+		~Graph();
 		void print();
 		void dijkstra();
 		//void output(int []);

@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 		}
 		cout << "Board Game #" << i << ":" << endl;
 		newGraph->dijkstra();
+		delete newGraph;
 	}
 
 }

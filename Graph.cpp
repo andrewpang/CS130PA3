@@ -29,6 +29,13 @@ Graph::Graph(int size){
 				graphArray[k][m] = 2;
 }
 
+Graph::~Graph(){
+	for(int i = 0; i <boardSize; i++){
+		delete[] graphArray[i];
+	}
+	delete[] graphArray;
+}
+
 int Graph::minDistance(int dist[], bool visit[]){
 	int min = INT_MAX, min_index;
 
