@@ -1,7 +1,7 @@
-all: prog1
+all: snl
 
-prog1: main.o Graph.o
-	g++ main.o Graph.o -o prog1
+snl: main.o Graph.o
+	g++ main.o Graph.o -o snl
 
 main.o: main.cpp
 	g++ main.cpp -c
@@ -10,4 +10,4 @@ Graph.o: Graph.cpp
 	g++ Graph.cpp -c
 
 clean: 
-	rm Graph.o main.o prog1
+	rm Graph.o main.o snl
